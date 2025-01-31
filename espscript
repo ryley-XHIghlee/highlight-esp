@@ -16,7 +16,7 @@ local function addHighlightToPlayer(player)
     highlight.Parent = character
     highlight.Name = "Highlight"
     highlight.Adornee = character
-    highlight.FillColor = Color3.fromRGB(255, 0, 0)
+    highlight.FillColor = Color3.fromRGB(255, 255, 255)
     highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
     highlight.FillTransparency = 0.5
     highlight.OutlineTransparency = 0
