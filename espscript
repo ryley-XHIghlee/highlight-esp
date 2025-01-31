@@ -16,10 +16,10 @@ local function addHighlightToPlayer(player)
     highlight.Parent = character
     highlight.Name = "Highlight"
     highlight.Adornee = character
-    highlight.FillColor = Color3.fromRGB(255, 0, 0)  -- Red highlight, you can change this
-    highlight.OutlineColor = Color3.fromRGB(255, 255, 255) -- White outline
-    highlight.FillTransparency = 0.5 -- Semi-transparent fill
-    highlight.OutlineTransparency = 0.5 -- Semi-transparent outline
+    highlight.FillColor = Color3.fromRGB(255, 0, 0)
+    highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+    highlight.FillTransparency = 0.5
+    highlight.OutlineTransparency = 0
 end
 
 -- Function to remove highlight from a player
