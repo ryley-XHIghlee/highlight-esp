@@ -1,0 +1,52 @@
+-- Script to highlight all players every 2 seconds and reset the highlights
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+
+-- Function to add a highlight to a player
+local function addHighlightToPlayer(player)
+    -- Check if the player already has a highlight
+    if not player.Character then return end
+    local character = player.Character
+    if character:FindFirstChild("Highlight") then
+        return -- Highlight already exists
+    end
+    
+    -- Create a Highlight instance
+    local highlight = Instance.new("Highlight")
+    highlight.Parent = character
+    highlight.Name = "Highlight"
+    highlight.Adornee = character
+    highlight.FillColor = Color3.fromRGB(255, 0, 0)  -- Red highlight, you can change this
+    highlight.OutlineColor = Color3.fromRGB(255, 255, 255) -- White outline
+    highlight.FillTransparency = 0.5 -- Semi-transparent fill
+    highlight.OutlineTransparency = 0.5 -- Semi-transparent outline
+end
+
+-- Function to remove highlight from a player
+local function removeHighlightFromPlayer(player)
+    if not player.Character then return end
+    local character = player.Character
+    local highlight = character:FindFirstChild("Highlight")
+    if highlight then
+        highlight:Destroy()
+    end
+end
+
+-- Function to refresh the highlight effect for all players every 2 seconds
+local function refreshHighlights()
+    -- First remove any existing highlights
+    for _, player in ipairs(Players:GetPlayers()) do
+        removeHighlightFromPlayer(player)
+    end
+
+    -- Then add highlights to all players
+    for _, player in ipairs(Players:GetPlayers()) do
+        addHighlightToPlayer(player)
+    end
+end
+
+-- Start the loop to refresh highlights every 2 seconds
+while true do
+    refreshHighlights()  -- Refresh highlights for all players
+    wait(2)  -- Wait for 2 seconds before refreshing again
+end
